@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  color: #35251d;
+  background: #fbf4f1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: min(100vw, 430px);
+  height: 100dvh;
+  margin: 0 auto;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: min(100vw, 430px);
+  height: 100dvh;
+  margin: 0 auto;
+  background: rgba(255, 248, 238, 0.12);
+  z-index: -1;
+}
+
+main {
+  width: min(100vw, 430px);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.music-toggle {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 9999;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(199, 165, 106, 0.9);
+  background: rgba(255, 250, 241, 0.86);
+  color: #35251d;
+  font-size: 21px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(48, 32, 23, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.music-toggle.playing {
+  background: rgba(53, 37, 29, 0.88);
+  color: #fffaf1;
+}
+
+.opening {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+}
+
+.opening-content {
+  width: 100%;
+  text-align: center;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.opening.opened .opening-content {
+  opacity: 0;
+  transform: translateY(-24px) scale(0.96);
+  pointer-events: none;
+}
+
+.tap-text {
+  font-family: "Great Vibes", cursive;
+  font-size: 46px;
+  color: #35251d;
+  text-shadow: 0 2px 14px rgba(255, 250, 241, 0.95);
+  margin-bottom: 34px;
+}
+
+.envelope-button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 900px;
+}
+
+.envelope-img {
+  width: min(320px, 82vw);
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 26px rgba(48, 32, 23, 0.34));
+  transform-origin: top center;
+  transition: transform 0.9s ease, opacity 0.9s ease;
+}
+
+.envelope-button.open .envelope-img {
+  transform: rotateX(68deg) translateY(-20px) scale(1.04);
+  opacity: 0.35;
+}
+
+.opening-names {
+  margin-top: 26px;
+  font-family: "Great Vibes", cursive;
+  font-size: 50px;
+  color: #35251d;
+  text-shadow: 0 2px 14px rgba(255, 250, 241, 0.95);
+}
+
+.card-section {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 8px;
+  background: transparent;
+}
+
+#invitation {
+  display: none;
+}
+
+#invitation.visible {
+  display: flex;
+}
+
+.lace-card {
+  position: relative;
+  width: min(97vw, 410px);
+  min-height: 640px;
+  display: grid;
+  place-items: center;
+}
+
+.small-card {
+  min-height: 560px;
+}
+
+.lace-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0.86;
+  filter: drop-shadow(0 16px 30px rgba(48, 32, 23, 0.2));
+}
+
+.lace-text {
+  position: relative;
+  z-index: 2;
+  width: 66%;
+  max-width: 280px;
+  min-height: 450px;
+  padding: 20px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.lace-text::before {
+  content: "";
+  position: absolute;
+  inset: 8px -8px;
+  background: rgba(255, 250, 241, 0.58);
+  z-index: -1;
+}
+
+.monogram {
+  font-family: "Great Vibes", cursive;
+  font-size: 48px;
+  color: #c7a56a;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 2px rgba(66, 43, 27, 0.18);
+}
+
+.intro {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  line-height: 1.35;
+  color: #35251d;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 0.84;
+  color: #35251d;
+  margin-bottom: 16px;
+  text-shadow: 0 1px 2px rgba(255, 250, 241, 0.55);
+}
+
+h1 span {
+  font-size: 40px;
+}
+
+.main-info {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #35251d;
+  margin-bottom: 17px;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.countdown div {
+  background: rgba(255, 250, 241, 0.72);
+  border: 1px solid rgba(199, 165, 106, 0.55);
+  padding: 8px 2px;
+}
+
+.countdown span {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #35251d;
+}
+
+.countdown small {
+  display: block;
+  margin-top: 1px;
+  font-size: 7px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #35251d;
+}
+
+.script-title {
+  font-family: "Great Vibes", cursive;
+  font-size: 44px;
+  color: #35251d;
+  margin-bottom: 18px;
+}
+
+.normal-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #35251d;
+  font-weight: 500;
+}
+
+.detail-line {
+  margin-top: 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #35251d;
+}
+
+.signature {
+  margin-top: 20px;
+  font-family: "Great Vibes", cursive;
+  font-size: 46px;
+  color: #35251d;
+}
+
+@media (max-width: 430px) {
+  body::before,
+  body::after,
+  main {
+    width: 100vw;
+  }
+
+  .music-toggle {
+    width: 44px;
+    height: 44px;
+    top: max(10px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+    font-size: 20px;
+  }
+
+  .opening {
+    min-height: 100dvh;
+  }
+
+  .card-section {
+    min-height: 100dvh;
+    padding: 14px 0;
+  }
+
+  .lace-card {
+    width: 100vw;
+    min-height: 96dvh;
+  }
+
+  .small-card {
+    min-height: 88dvh;
+  }
+
+  .lace-text {
+    width: 66%;
+    min-height: 66dvh;
+  }
+
+  .tap-text {
+    font-size: 42px;
+  }
+
+  .opening-names {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 380px) {
+  .lace-card {
+    min-height: 94dvh;
+  }
+
+  .lace-text {
+    width: 66%;
+    min-height: 62dvh;
+  }
+
+  h1 {
+    font-size: 54px;
+  }
+
+  .main-info {
+    font-size: 22px;
+  }
+
+  .countdown span {
+    font-size: 18px;
+  }
+}
