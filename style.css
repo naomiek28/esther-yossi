@@ -38,7 +38,7 @@ body::after {
   width: min(100vw, 430px);
   height: 100dvh;
   margin: 0 auto;
-  background: rgba(255, 248, 238, 0.12);
+  background: rgba(255, 248, 238, 0.08);
   z-index: -1;
 }
 
@@ -60,7 +60,6 @@ main {
   background: rgba(255, 250, 241, 0.86);
   color: #35251d;
   font-size: 21px;
-  line-height: 1;
   cursor: pointer;
   box-shadow: 0 10px 24px rgba(48, 32, 23, 0.2);
   backdrop-filter: blur(6px);
@@ -132,7 +131,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 22px 8px;
+  padding: 18px 0;
   background: transparent;
 }
 
@@ -146,14 +145,14 @@ main {
 
 .lace-card {
   position: relative;
-  width: min(97vw, 410px);
-  min-height: 640px;
+  width: min(100vw, 410px);
+  aspect-ratio: 457 / 610;
   display: grid;
   place-items: center;
 }
 
 .small-card {
-  min-height: 560px;
+  width: min(94vw, 380px);
 }
 
 .lace-frame {
@@ -161,43 +160,35 @@ main {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: fill;
-  opacity: 0.86;
+  object-fit: contain;
+  opacity: 0.9;
   filter: drop-shadow(0 16px 30px rgba(48, 32, 23, 0.2));
 }
 
 .lace-text {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  top: 16%;
+  left: 17%;
   width: 66%;
-  max-width: 280px;
-  min-height: 450px;
-  padding: 20px 2px;
+  height: 68%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-.lace-text::before {
-  content: "";
-  position: absolute;
-  inset: 8px -8px;
-  background: rgba(255, 250, 241, 0.58);
-  z-index: -1;
-}
-
 .monogram {
   font-family: "Great Vibes", cursive;
-  font-size: 48px;
+  font-size: 52px;
   color: #c7a56a;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-shadow: 0 1px 2px rgba(66, 43, 27, 0.18);
 }
 
 .intro {
   font-family: "Cormorant Garamond", serif;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.35;
   color: #35251d;
   font-weight: 600;
@@ -207,42 +198,42 @@ main {
 h1 {
   font-family: "Great Vibes", cursive;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 62px;
   line-height: 0.84;
   color: #35251d;
   margin-bottom: 16px;
-  text-shadow: 0 1px 2px rgba(255, 250, 241, 0.55);
+  text-shadow: 0 1px 2px rgba(255, 250, 241, 0.75);
 }
 
 h1 span {
-  font-size: 40px;
+  font-size: 42px;
 }
 
 .main-info {
   font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 1.35;
   color: #35251d;
-  margin-bottom: 17px;
+  margin-bottom: 16px;
 }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 6px;
 }
 
 .countdown div {
-  background: rgba(255, 250, 241, 0.72);
-  border: 1px solid rgba(199, 165, 106, 0.55);
-  padding: 8px 2px;
+  background: transparent;
+  border: 0;
+  padding: 0;
 }
 
 .countdown span {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: #35251d;
 }
@@ -258,7 +249,7 @@ h1 span {
 
 .script-title {
   font-family: "Great Vibes", cursive;
-  font-size: 44px;
+  font-size: 46px;
   color: #35251d;
   margin-bottom: 18px;
 }
@@ -300,27 +291,25 @@ h1 span {
     font-size: 20px;
   }
 
-  .opening {
-    min-height: 100dvh;
-  }
-
   .card-section {
     min-height: 100dvh;
-    padding: 14px 0;
+    padding: 10px 0;
   }
 
   .lace-card {
     width: 100vw;
-    min-height: 96dvh;
+    aspect-ratio: 457 / 610;
   }
 
   .small-card {
-    min-height: 88dvh;
+    width: 96vw;
   }
 
   .lace-text {
+    top: 16%;
+    left: 17%;
     width: 66%;
-    min-height: 66dvh;
+    height: 68%;
   }
 
   .tap-text {
@@ -333,17 +322,20 @@ h1 span {
 }
 
 @media (max-width: 380px) {
-  .lace-card {
-    min-height: 94dvh;
+  .monogram {
+    font-size: 46px;
   }
 
-  .lace-text {
-    width: 66%;
-    min-height: 62dvh;
+  .intro {
+    font-size: 16px;
   }
 
   h1 {
     font-size: 54px;
+  }
+
+  h1 span {
+    font-size: 36px;
   }
 
   .main-info {
@@ -352,5 +344,9 @@ h1 span {
 
   .countdown span {
     font-size: 18px;
+  }
+
+  .countdown small {
+    font-size: 6px;
   }
 }
