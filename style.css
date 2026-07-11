@@ -56,12 +56,12 @@ main {
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(199, 165, 106, 0.9);
+  border: 1px solid rgba(216, 204, 188, 0.9);
   background: rgba(255, 250, 241, 0.86);
   color: #35251d;
   font-size: 21px;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(48, 32, 23, 0.2);
+  box-shadow: 0 10px 24px rgba(53, 37, 29, 0.16);
   backdrop-filter: blur(6px);
 }
 
@@ -161,7 +161,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.9;
+  opacity: 0.92;
   filter: drop-shadow(0 16px 30px rgba(48, 32, 23, 0.2));
 }
 
@@ -179,26 +179,44 @@ main {
 }
 
 .simple-text {
-  top: 15%;
-  height: 66%;
+  top: 14.5%;
+  height: 68%;
 }
 
+.lace-text::before {
+  content: "E&Y";
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  font-family: "Great Vibes", cursive;
+  font-size: 78px;
+  line-height: 1;
+  color: #35251d;
+  opacity: 0.055;
+  white-space: nowrap;
+  pointer-events: none;
+}
 .bsd {
   font-family: "Cormorant Garamond", serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1;
   color: #35251d;
   margin-bottom: 24px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(255, 250, 241, 0.7);
 }
 
 h1 {
   font-family: "Great Vibes", cursive;
   font-weight: 400;
-  font-size: 70px;
+  font-size: 72px;
   line-height: 0.82;
   color: #35251d;
-  margin-bottom: 24px;
-  text-shadow: 0 1px 2px rgba(255, 250, 241, 0.75);
+  margin-bottom: 26px;
+  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
 h1 span {
@@ -207,31 +225,47 @@ h1 span {
 
 .main-info {
   font-family: "Cormorant Garamond", serif;
-  font-size: 26px;
   font-weight: 600;
   line-height: 1.28;
   color: #35251d;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
+  text-shadow: 0 1px 4px rgba(255, 250, 241, 0.7);
+}
+
+.main-info p:first-child {
+  font-size: 25px;
+}
+
+.main-info p:last-child {
+  font-size: 22px;
+  margin-top: 2px;
 }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-  width: 95%;
+  gap: 6px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .countdown div {
-  background: transparent;
-  border: 0;
-  padding: 0;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 250, 241, 0.68);
+  border: 1px solid rgba(216, 204, 188, 0.72);
+  border-radius: 6px;
+  box-shadow: 0 5px 14px rgba(53, 37, 29, 0.06);
+  backdrop-filter: blur(2px);
 }
 
 .countdown span {
   display: block;
   font-family: "Cormorant Garamond", serif;
-  font-size: 19px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1;
   color: #35251d;
@@ -239,11 +273,14 @@ h1 span {
 
 .countdown small {
   display: block;
-  margin-top: 1px;
-  font-size: 6px;
-  letter-spacing: 0.4px;
+  margin-top: 4px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 6.5px;
+  font-weight: 400;
+  letter-spacing: 0.65px;
   text-transform: uppercase;
   color: #35251d;
+  opacity: 0.78;
 }
 
 .script-title {
@@ -251,6 +288,7 @@ h1 span {
   font-size: 46px;
   color: #35251d;
   margin-bottom: 18px;
+  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
 .normal-text {
@@ -273,6 +311,7 @@ h1 span {
   font-family: "Great Vibes", cursive;
   font-size: 46px;
   color: #35251d;
+  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
 @media (max-width: 430px) {
@@ -311,8 +350,8 @@ h1 span {
   }
 
   .simple-text {
-    top: 15%;
-    height: 66%;
+    top: 14.5%;
+    height: 68%;
   }
 
   .tap-text {
@@ -325,13 +364,19 @@ h1 span {
 }
 
 @media (max-width: 380px) {
+ .lace-text::before {
+  font-size: 64px;
+  opacity: 0.055;
+}
+
   .bsd {
-    font-size: 18px;
-    margin-bottom: 18px;
+    font-size: 17px;
+    margin-bottom: 20px;
   }
 
   h1 {
-    font-size: 58px;
+    font-size: 60px;
+    margin-bottom: 20px;
   }
 
   h1 span {
@@ -339,15 +384,32 @@ h1 span {
   }
 
   .main-info {
+    margin-bottom: 18px;
+  }
+
+  .main-info p:first-child {
     font-size: 22px;
-    margin-bottom: 16px;
+  }
+
+  .main-info p:last-child {
+    font-size: 19px;
+  }
+
+  .countdown {
+    gap: 4px;
+  }
+
+  .countdown div {
+    min-height: 45px;
+    border-radius: 5px;
   }
 
   .countdown span {
-    font-size: 16px;
+    font-size: 19px;
   }
 
   .countdown small {
     font-size: 5px;
+    letter-spacing: 0.4px;
   }
 }
