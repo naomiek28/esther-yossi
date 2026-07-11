@@ -131,7 +131,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px 0;
+  padding: 10px 0;
   background: transparent;
 }
 
@@ -145,14 +145,14 @@ main {
 
 .lace-card {
   position: relative;
-  width: min(100vw, 410px);
-  aspect-ratio: 457 / 610;
+  width: min(100vw, 430px);
+  aspect-ratio: 720 / 900;
   display: grid;
   place-items: center;
 }
 
 .small-card {
-  width: min(94vw, 380px);
+  width: min(96vw, 410px);
 }
 
 .lace-frame {
@@ -168,10 +168,10 @@ main {
 .lace-text {
   position: absolute;
   z-index: 2;
-  top: 15%;
-  left: 17%;
-  width: 66%;
-  height: 64%;
+  top: 14%;
+  left: 20%;
+  width: 60%;
+  height: 68%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -179,8 +179,8 @@ main {
 }
 
 .simple-text {
-  top: 17%;
-  height: 60%;
+  top: 15%;
+  height: 66%;
 }
 
 .bsd {
@@ -188,37 +188,37 @@ main {
   font-size: 20px;
   font-weight: 600;
   color: #35251d;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 h1 {
   font-family: "Great Vibes", cursive;
   font-weight: 400;
-  font-size: 66px;
+  font-size: 70px;
   line-height: 0.82;
   color: #35251d;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   text-shadow: 0 1px 2px rgba(255, 250, 241, 0.75);
 }
 
 h1 span {
-  font-size: 40px;
+  font-size: 42px;
 }
 
 .main-info {
   font-family: "Cormorant Garamond", serif;
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1.28;
   color: #35251d;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 3px;
-  width: 92%;
+  gap: 4px;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -291,29 +291,28 @@ h1 span {
   }
 
   .card-section {
-    min-height: 100dvh;
-    padding: 10px 0;
+    padding: 6px 0;
   }
 
   .lace-card {
     width: 100vw;
-    aspect-ratio: 457 / 610;
+    aspect-ratio: 720 / 900;
   }
 
   .small-card {
-    width: 96vw;
+    width: 98vw;
   }
 
   .lace-text {
-    top: 15%;
-    left: 17%;
-    width: 66%;
-    height: 64%;
+    top: 14%;
+    left: 20%;
+    width: 60%;
+    height: 68%;
   }
 
   .simple-text {
-    top: 17%;
-    height: 60%;
+    top: 15%;
+    height: 66%;
   }
 
   .tap-text {
@@ -332,7 +331,7 @@ h1 span {
   }
 
   h1 {
-    font-size: 56px;
+    font-size: 58px;
   }
 
   h1 span {
@@ -341,6 +340,7 @@ h1 span {
 
   .main-info {
     font-size: 22px;
+    margin-bottom: 16px;
   }
 
   .countdown span {
