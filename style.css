@@ -255,12 +255,13 @@ main {
 
 .bsd {
   font-family: "Cormorant Garamond", serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1;
   color: #35251d;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   text-align: center;
+  transform: translateY(12px);
 }
 
 h2 {
