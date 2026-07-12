@@ -1,10 +1,10 @@
 const openButton = document.getElementById("openEnvelope");
-const opening = document.getElementById("opening");
 const invitation = document.getElementById("invitation");
 const weddingMusic = document.getElementById("weddingMusic");
 const musicToggle = document.getElementById("musicToggle");
 
 let musicStarted = false;
+let envelopeOpened = false;
 
 function updateMusicButton() {
   if (weddingMusic.paused) {
@@ -29,17 +29,23 @@ function playMusic() {
   });
 }
 
-openButton.addEventListener("click", () => {
-  openButton.classList.add("open");
-  opening.classList.add("opened");
+function openInvitation() {
+  if (envelopeOpened) return;
+
+  envelopeOpened = true;
+  openButton.disabled = true;
+  document.body.classList.add("invitation-open");
 
   playMusic();
 
+  invitation.classList.add("visible");
+
   setTimeout(() => {
-    invitation.classList.add("visible");
     invitation.scrollIntoView({ behavior: "smooth" });
-  }, 850);
-});
+  }, 220);
+}
+
+openButton.addEventListener("click", openInvitation);
 
 musicToggle.addEventListener("click", () => {
   if (!musicStarted || weddingMusic.paused) {
