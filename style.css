@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -12,6 +12,7 @@ html {
 
 body {
   min-height: 100vh;
+  overflow-x: hidden;
   font-family: "Montserrat", sans-serif;
   color: #35251d;
   background: #fbf4f1;
@@ -22,13 +23,14 @@ body::before {
   position: fixed;
   inset: 0;
   width: min(100vw, 430px);
-  height: 100dvh;
+  height: 100svh;
   margin: 0 auto;
   background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
   z-index: -2;
+  transition: filter 900ms ease, transform 900ms ease;
 }
 
 body::after {
@@ -36,10 +38,20 @@ body::after {
   position: fixed;
   inset: 0;
   width: min(100vw, 430px);
-  height: 100dvh;
+  height: 100svh;
   margin: 0 auto;
   background: rgba(255, 248, 238, 0.08);
   z-index: -1;
+  transition: background 900ms ease;
+}
+
+body.invitation-open::before {
+  filter: brightness(0.68);
+  transform: scale(1.01);
+}
+
+body.invitation-open::after {
+  background: rgba(53, 37, 29, 0.28);
 }
 
 main {
@@ -71,63 +83,105 @@ main {
 }
 
 .opening {
-  min-height: 100dvh;
-  display: grid;
-  place-items: center;
-  padding: 26px;
+  min-height: 100svh;
 }
 
 .opening-content {
-  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(26px);
+  padding: 60px 20px 42px;
   text-align: center;
-  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
-.opening.opened .opening-content {
-  opacity: 0;
-  transform: translateY(-24px) scale(0.96);
-  pointer-events: none;
+.intro-text {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 4.7vw, 22px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #fffaf1;
+  text-shadow: 0 2px 10px rgba(53, 37, 29, 0.48);
 }
 
-.tap-text {
+.couple-names {
+  margin: 0 0 30px;
+  max-width: calc(100vw - 40px);
   font-family: "Great Vibes", cursive;
-  font-size: 46px;
-  color: #35251d;
-  text-shadow: 0 2px 14px rgba(255, 250, 241, 0.95);
-  margin-bottom: 34px;
+  font-size: clamp(42px, 10.5vw, 64px);
+  font-weight: 400;
+  line-height: 1;
+  color: #fffaf1;
+  text-shadow: 0 3px 14px rgba(53, 37, 29, 0.38);
+  white-space: nowrap;
 }
 
 .envelope-button {
+  position: relative;
+  width: min(calc(100vw - 72px), 280px);
   border: 0;
   background: transparent;
   cursor: pointer;
-  perspective: 900px;
+  display: block;
+  padding: 0;
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.envelope-button:hover,
+.envelope-button:focus-visible {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.envelope-button::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 2%;
+  height: 16%;
+  border-radius: 50%;
+  background: rgba(53, 37, 29, 0.25);
+  filter: blur(15px);
+  z-index: -1;
 }
 
 .envelope-img {
-  width: min(320px, 82vw);
+  width: 100%;
   display: block;
-  margin: 0 auto;
-  filter: drop-shadow(0 20px 26px rgba(48, 32, 23, 0.34));
-  transform-origin: top center;
-  transition: transform 0.9s ease, opacity 0.9s ease;
+  filter: drop-shadow(0 18px 28px rgba(53, 37, 29, 0.22));
 }
 
-.envelope-button.open .envelope-img {
-  transform: rotateX(68deg) translateY(-20px) scale(1.04);
-  opacity: 0.35;
-}
-
-.opening-names {
-  margin-top: 26px;
-  font-family: "Great Vibes", cursive;
-  font-size: 50px;
+.open-instruction {
+  margin-top: 24px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 4.5vw, 21px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: #35251d;
-  text-shadow: 0 2px 14px rgba(255, 250, 241, 0.95);
+  text-shadow: 0 2px 12px rgba(255, 250, 241, 0.9);
+}
+
+.logo-separator {
+  min-height: 34svh;
+  display: grid;
+  place-items: center;
+  padding: 28px 0;
+}
+
+.logo-separator img {
+  width: min(42vw, 150px);
+  max-height: 150px;
+  object-fit: contain;
+  opacity: 0.96;
+  filter: drop-shadow(0 10px 24px rgba(53, 37, 29, 0.18));
 }
 
 .card-section {
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -190,7 +244,7 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  font-family: "Great Vibes", cursive;
+  font-family: "Cormorant Garamond", serif;
   font-size: 78px;
   line-height: 1;
   color: #35251d;
@@ -198,6 +252,7 @@ main {
   white-space: nowrap;
   pointer-events: none;
 }
+
 .bsd {
   font-family: "Cormorant Garamond", serif;
   font-size: 18px;
@@ -206,21 +261,19 @@ main {
   color: #35251d;
   margin-bottom: 24px;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(255, 250, 241, 0.7);
 }
 
-h1 {
+h2 {
   font-family: "Great Vibes", cursive;
   font-weight: 400;
-  font-size: 72px;
-  line-height: 0.82;
+  font-size: 68px;
+  line-height: 0.86;
   color: #35251d;
   margin-bottom: 26px;
-  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
-h1 span {
-  font-size: 42px;
+h2 span {
+  font-size: 38px;
 }
 
 .main-info {
@@ -229,7 +282,6 @@ h1 span {
   line-height: 1.28;
   color: #35251d;
   margin-bottom: 24px;
-  text-shadow: 0 1px 4px rgba(255, 250, 241, 0.7);
 }
 
 .main-info p:first-child {
@@ -284,11 +336,11 @@ h1 span {
 }
 
 .script-title {
-  font-family: "Great Vibes", cursive;
-  font-size: 46px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
   color: #35251d;
   margin-bottom: 18px;
-  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
 .normal-text {
@@ -308,10 +360,10 @@ h1 span {
 
 .signature {
   margin-top: 20px;
-  font-family: "Great Vibes", cursive;
-  font-size: 46px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 42px;
+  font-weight: 400;
   color: #35251d;
-  text-shadow: 0 2px 5px rgba(255, 250, 241, 0.72);
 }
 
 @media (max-width: 430px) {
@@ -329,6 +381,20 @@ h1 span {
     font-size: 20px;
   }
 
+  .opening-content {
+    transform: translateY(22px);
+    padding: 70px 20px 42px;
+  }
+
+  .couple-names {
+    font-size: clamp(40px, 10vw, 54px);
+    margin-bottom: 28px;
+  }
+
+  .envelope-button {
+    width: min(calc(100vw - 76px), 270px);
+  }
+
   .card-section {
     padding: 6px 0;
   }
@@ -341,58 +407,24 @@ h1 span {
   .small-card {
     width: 98vw;
   }
-
-  .lace-text {
-    top: 14%;
-    left: 20%;
-    width: 60%;
-    height: 68%;
-  }
-
-  .simple-text {
-    top: 14.5%;
-    height: 68%;
-  }
-
-  .tap-text {
-    font-size: 42px;
-  }
-
-  .opening-names {
-    font-size: 46px;
-  }
 }
 
-@media (max-width: 380px) {
- .lace-text::before {
-  font-size: 64px;
-  opacity: 0.055;
-}
+@media (max-width: 360px) {
+  .couple-names {
+    font-size: 38px;
+  }
 
-  .bsd {
-    font-size: 17px;
+  .envelope-button {
+    width: min(calc(100vw - 82px), 250px);
+  }
+
+  h2 {
+    font-size: 56px;
     margin-bottom: 20px;
   }
 
-  h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-  }
-
-  h1 span {
+  h2 span {
     font-size: 34px;
-  }
-
-  .main-info {
-    margin-bottom: 18px;
-  }
-
-  .main-info p:first-child {
-    font-size: 22px;
-  }
-
-  .main-info p:last-child {
-    font-size: 19px;
   }
 
   .countdown {
@@ -401,7 +433,6 @@ h1 span {
 
   .countdown div {
     min-height: 45px;
-    border-radius: 5px;
   }
 
   .countdown span {
